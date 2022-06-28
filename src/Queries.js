@@ -1,5 +1,5 @@
 // import { start } from './TesteQuery'
-import  Exemplo  from './queries/Aexemplo'
+import  Exemplo  from './AACidades';
 
 export default function Queries() {
     var response;
