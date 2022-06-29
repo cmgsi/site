@@ -1,5 +1,5 @@
 // import { start } from './TesteQuery'
-import  Exemplo  from './AACidades';
+import  CidadesSP  from './AACidades';
 
 export default function Queries() {
     var response;
@@ -22,8 +22,8 @@ export default function Queries() {
                 }
 
             </script>
-            <div className="Exemplo">
-                <Exemplo/>
+            <div className="CidadesSP">
+                <CidadesSP/>
             </div>
 
 
