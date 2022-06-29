@@ -56,7 +56,7 @@ const DropDownList = styled("ul")`
   font-size: 0.73rem;
   font-weight: 400;
   overflow-y: scroll; 
-  height: 20vh;
+  height: 16vh;
   &:first-child {
     padding-top: 0.8em;
   }
@@ -67,7 +67,9 @@ const ListItem = styled("li")`
   margin-bottom: 0.1em;
 `;
 
-var options = [] 
+
+var options = []
+const options2 = ["Federal", "Estadual"];
 
 function App() {
 
@@ -83,12 +85,11 @@ function App() {
       })
     return () => mounted = false;
   }, [])
-  options= list
+  options = list
 
-
+  //Municipal
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-
   const toggling = () => setIsOpen(!isOpen);
 
   const onOptionClicked = value => () => {
@@ -96,6 +97,22 @@ function App() {
     setIsOpen(false);
     console.log(selectedOption);
   };
+
+
+  //Federal
+  const [isOpen2, setIsOpen2] = useState(false);
+  const [selectedOption2, setSelectedOption2] = useState(null);
+
+  const togglingFederal = () => setIsOpen2(!isOpen2);
+
+  const onOptionClickedFederal = value => () => {
+    setSelectedOption2(value);
+    setIsOpen2(false);
+    console.log(selectedOption2);
+  };
+
+
+
 
   return (
     <Main>
@@ -116,8 +133,27 @@ function App() {
           </DropDownListContainer>
         )}
       </DropDownContainer>
+
+      <center><h6>Fonte da Receita</h6></center>
+
+      <DropDownContainer>
+        <DropDownHeader onClick={togglingFederal}>
+          {selectedOption2 || "Federal"}
+        </DropDownHeader>
+        {isOpen2 && (
+          <DropDownListContainer>
+            <DropDownList>
+              {options2.map(option => (
+                <ListItem onClick={onOptionClickedFederal(option)} key={Math.random()}>
+                  {option}
+                </ListItem>
+              ))}
+            </DropDownList>
+          </DropDownListContainer>
+        )}
+      </DropDownContainer>
     </Main>
   );
 }
 
- export default App;
+export default App;
