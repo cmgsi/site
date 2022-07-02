@@ -17,4 +17,5 @@ yarn-debug.log*
 yarn-error.log*
 /.idea/
 /public/examples/papio_anubis.xlsx
+.eslintcac
 .eslintcache
