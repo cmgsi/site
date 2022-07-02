@@ -145,7 +145,7 @@ const FoamTreeCsv = () => {
           <FoamTreePanel dataObject={dataObject} foamTreeRef={foamTreeRef} />
         </div>
         <div className="settings">
-          <SettingsPanel welcomeClicked={() => setDataObject({})} exportJsonClicked={exportJson} exportJsonPClicked={exportJsonP} />
+          <SettingsPanel exampleClicked={loadExample} welcomeClicked={() => setDataObject({})} exportJsonClicked={exportJson} exportJsonPClicked={exportJsonP} />
           <hr />
           <div style={{ textAlign: "right", marginBottom: "0.25em" }}>
             <ButtonLink onClick={() => logStore.entries = []}>limpar os logs</ButtonLink>

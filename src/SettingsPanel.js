@@ -7,6 +7,13 @@ import { FormGroup } from "@blueprintjs/core";
 
 import Queries from "./Queries";
 
+const ExampleLink = ({ fileName, label, onClick, children }) => {
+  return <>
+    <ButtonLink onClick={() => onClick(fileName)}>{children}</ButtonLink>;
+  </>;
+};
+
+
 
 
 const storeGetter = (setting) => settingsStore[setting.id];
@@ -51,7 +58,7 @@ const settings = {
 };
 
 
-const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClicked }) => (
+const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClicked, exampleClicked }) => (
   <>
     <h3>Painel de Filtros e Funções</h3>
 
@@ -63,6 +70,10 @@ const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClic
       <Queries />
     </div>
     <hr />
+
+    <p>
+      Examples: <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked}>protein levels</ExampleLink>
+    </p>
 
     <button
       onclick="reloadWithQueryStringVars({'origem':$('#selectEstado').val(),'municipio':$('#selectMunicipio').val()})">Enviar dados</button>
