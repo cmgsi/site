@@ -69,11 +69,11 @@ const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClic
       <Queries exampleClicked />
     </div>
 
-    <p>
-      <center>
+    <center>
+      <p>
         <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked}> Pesquisar.. </ExampleLink>
-      </center>
-    </p>
+      </p>
+    </center>
 
     <hr />
     <Settings settings={settings} get={storeGetter} set={storeSetter} />

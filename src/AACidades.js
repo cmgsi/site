@@ -1,26 +1,6 @@
-
 import styled from 'styled-components';
 import { start } from './AAQueryCidades.js';
-
 import React, { useEffect, useState } from 'react';
-
-// export  function CallList() {
-//   const [list, setList] = useState([]);
-
-//   useEffect(() => {
-//     let mounted = true;
-//     start()
-//       .then(items => {
-//         if (mounted) {
-//           setList(items)
-//         }
-//       })
-//     return () => mounted = false;
-//   }, [])
-//   return (list)
-// }
-
-
 
 const Main = styled("div")`
   font-family: sans-serif;
@@ -124,11 +104,7 @@ function App() {
         {isOpen && (
           <DropDownListContainer>
             <DropDownList>
-              {options.map(option => (
-                <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
-                  {option}
-                </ListItem>
-              ))}
+              {options.map(option => (<ListItem onClick={onOptionClicked(option)} key={Math.random()}>{option}</ListItem>))}
             </DropDownList>
           </DropDownListContainer>
         )}
@@ -143,11 +119,7 @@ function App() {
         {isOpen2 && (
           <DropDownListContainer>
             <DropDownList>
-              {options2.map(option => (
-                <ListItem onClick={onOptionClickedFederal(option)} key={Math.random()}>
-                  {option}
-                </ListItem>
-              ))}
+              {options2.map(option => (<ListItem onClick={onOptionClickedFederal(option)} key={Math.random()}>{option}</ListItem>))}
             </DropDownList>
           </DropDownListContainer>
         )}
