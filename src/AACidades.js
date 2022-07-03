@@ -53,11 +53,10 @@ const options2 = ["Federal", "Estadual", "Municipal"];
 
 var city = ''
 var revenue = ''
+var params = [];
 
 function App() {
-
   const [list, setList] = useState([]);
-
   useEffect(() => {
     let mounted = true;
     start()
@@ -74,22 +73,17 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const toggling = () => setIsOpen(!isOpen);
-
   const onOptionClicked = value => () => {
-    
     setSelectedOption(value);
     setIsOpen(false);
     console.log(selectedOption);
     city = value;
   };
 
-
   //Federal
   const [isOpen2, setIsOpen2] = useState(false);
   const [selectedOption2, setSelectedOption2] = useState(null);
-
   const togglingFederal = () => setIsOpen2(!isOpen2);
-
   const onOptionClickedFederal = value => () => {
     setSelectedOption2(value);
     setIsOpen2(false);
@@ -97,6 +91,25 @@ function App() {
     revenue = value
   };
 
+  function getAllPageParams() {
+    var ano = 2010;
+    var origem = revenue;
+    var municipio = city;
+    return [ano, origem, municipio];
+  }
+
+  function execAllViz() {
+    var endpoint = "http://cassidy.gpopai.usp.br:8209/" + endpoint[params[1]];
+    params = getAllPageParams();
+    var endpoint = { "SP": "OrcamentoGovernoEstadoSP/query", "Federal": "OrcamentoGovernoFederal/query", "municipio": "OrcamentoGovernoMunicipiosSP/query" };
+    var valor = { "SP": "Empenhado", "Federal": "", "municipio": "Pago" }
+    var varx = "?var_x";
+
+    if (params[2] != "todos" && params[1] != "Federal") {
+      params[1] = "municipio";
+      varx = "'" + params[2] + "'";
+    }
+  }
 
 
 
