@@ -51,6 +51,9 @@ const ListItem = styled("li")`
 var options = []
 const options2 = ["Federal", "Estadual", "Municipal"];
 
+var city = ''
+var revenue = ''
+
 function App() {
 
   const [list, setList] = useState([]);
@@ -73,9 +76,11 @@ function App() {
   const toggling = () => setIsOpen(!isOpen);
 
   const onOptionClicked = value => () => {
+    
     setSelectedOption(value);
     setIsOpen(false);
     console.log(selectedOption);
+    city = value;
   };
 
 
@@ -89,6 +94,7 @@ function App() {
     setSelectedOption2(value);
     setIsOpen2(false);
     console.log(selectedOption2);
+    revenue = value
   };
 
 
