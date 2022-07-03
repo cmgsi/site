@@ -15,8 +15,6 @@ const ExampleLink = ({ fileName, label, onClick, children }) => {
 };
 
 
-
-
 const storeGetter = (setting) => settingsStore[setting.id];
 const storeSetter = (setting, value) => settingsStore[setting.id] = value;
 
@@ -70,16 +68,11 @@ const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClic
     <div className="Queries">
       <Queries exampleClicked />
     </div>
-    <hr />
 
     <p>
-      Pesquisar: 
-      
+      Pesquisar:
       <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked}> protein levels </ExampleLink>
-      
     </p>
-
-    {/* <button onclick="reloadWithQueryStringVars({'origem':$('#selectEstado').val(),'municipio':$('#selectMunicipio').val()})">Enviar dados</button> */}
 
     <hr />
     <Settings settings={settings} get={storeGetter} set={storeSetter} />
