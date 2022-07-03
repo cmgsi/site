@@ -70,8 +70,9 @@ const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClic
     </div>
 
     <p>
-      Pesquisar:
-      <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked}> protein levels </ExampleLink>
+      <center>
+        <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked}> Pesquisar.. </ExampleLink>
+      </center>
     </p>
 
     <hr />
