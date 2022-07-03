@@ -3,13 +3,14 @@ import Settings from "./carrotsearch/ui/settings/Settings.js";
 import { view } from "react-easy-state";
 import { settingsStore } from "./stores.js";
 import { ButtonLink } from "./carrotsearch/ui/ButtonLink.js";
+import { ButtonDefault } from "./carrotsearch/ui/ButtonDefault.js";
 import { FormGroup } from "@blueprintjs/core";
 
 import Queries from "./Queries";
 
 const ExampleLink = ({ fileName, label, onClick, children }) => {
   return <>
-    <ButtonLink onClick={() => onClick(fileName)}>{children}</ButtonLink>;
+    <ButtonDefault onClick={() => onClick(fileName)}>{children}</ButtonDefault>
   </>;
 };
 
@@ -67,21 +68,21 @@ const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClic
     </p>
 
     <div className="Queries">
-      <Queries />
+      <Queries exampleClicked />
     </div>
     <hr />
 
     <p>
-      Examples: <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked}>protein levels</ExampleLink>
+      Pesquisar: 
+      
+      <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked}> protein levels </ExampleLink>
+      
     </p>
 
-    <button
-      onclick="reloadWithQueryStringVars({'origem':$('#selectEstado').val(),'municipio':$('#selectMunicipio').val()})">Enviar dados</button>
+    {/* <button onclick="reloadWithQueryStringVars({'origem':$('#selectEstado').val(),'municipio':$('#selectMunicipio').val()})">Enviar dados</button> */}
 
     <hr />
-
     <Settings settings={settings} get={storeGetter} set={storeSetter} />
-
     <hr />
 
     <div className="Settings">
