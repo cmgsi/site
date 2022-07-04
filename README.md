@@ -12,5 +12,6 @@
 
 * http://localhost:3000/
 
+tsc ABQueryCidades.ts && node ABQueryCidades.js
 
-#
+# 
