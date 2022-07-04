@@ -71,7 +71,7 @@ const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClic
 
     <center>
       <p>
-        <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked}> Pesquisar.. </ExampleLink>
+        <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked}> Exemplo de apresentação.. </ExampleLink>
       </p>
     </center>
 

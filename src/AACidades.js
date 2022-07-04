@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { start } from './AAQueryCidades.js';
+import { start2 } from './ABQueryCidades.js';
 import React, { useEffect, useState } from 'react';
 import { ButtonDefault } from "./carrotsearch/ui/ButtonDefault.js";
+import { Button } from "@blueprintjs/core";
 
 const Main = styled("div")`
   font-family: sans-serif;
@@ -99,9 +101,7 @@ function App() {
     return [ano, origem, municipio];
   }
 
- 
 
-  
 
   const ExampleLink = ({ fileName, label, onClick, children }) => {
     return <>
@@ -141,11 +141,19 @@ function App() {
       </DropDownContainer>
       <center>
         <p>
-          {/* <ExampleLink onClick={execAllViz()}> Pesquisar.. </ExampleLink> */}
+          <Button type="button" onClick={() => consult()} > Pesquisar.. </Button>
         </p>
       </center>
     </Main>
   );
+
+  function consult() {
+    var params = getAllPageParams();
+    console.log(params);
+    start2(params);
+  };
 }
+
+
 
 export default App;
