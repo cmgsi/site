@@ -39,7 +39,6 @@ export function start() {
   return func()
     .then(v => {
       return v
-
     });
 }
 

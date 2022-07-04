@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { start } from './AAQueryCidades.js';
 import React, { useEffect, useState } from 'react';
+import { ButtonDefault } from "./carrotsearch/ui/ButtonDefault.js";
 
 const Main = styled("div")`
   font-family: sans-serif;
@@ -98,20 +99,15 @@ function App() {
     return [ano, origem, municipio];
   }
 
-  function execAllViz() {
-    var endpoint = "http://cassidy.gpopai.usp.br:8209/" + endpoint[params[1]];
-    params = getAllPageParams();
-    var endpoint = { "SP": "OrcamentoGovernoEstadoSP/query", "Federal": "OrcamentoGovernoFederal/query", "municipio": "OrcamentoGovernoMunicipiosSP/query" };
-    var valor = { "SP": "Empenhado", "Federal": "", "municipio": "Pago" }
-    var varx = "?var_x";
+ 
 
-    if (params[2] != "todos" && params[1] != "Federal") {
-      params[1] = "municipio";
-      varx = "'" + params[2] + "'";
-    }
-  }
+  
 
-
+  const ExampleLink = ({ fileName, label, onClick, children }) => {
+    return <>
+      <ButtonDefault onClick={() => onClick(fileName)}>{children}</ButtonDefault>
+    </>;
+  };
 
   return (
     <Main>
@@ -143,6 +139,11 @@ function App() {
           </DropDownListContainer>
         )}
       </DropDownContainer>
+      <center>
+        <p>
+          {/* <ExampleLink onClick={execAllViz()}> Pesquisar.. </ExampleLink> */}
+        </p>
+      </center>
     </Main>
   );
 }
