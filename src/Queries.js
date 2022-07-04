@@ -5,7 +5,7 @@ export default function Queries() {
     return (
         <div className="Queries">
             <div className="CidadesSP">
-                <CidadesSP />
+                <CidadesSP/>
             </div>
         </div>
     );

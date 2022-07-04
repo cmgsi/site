@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { ButtonDefault } from "./carrotsearch/ui/ButtonDefault.js";
 import { Button } from "@blueprintjs/core";
 
+
 const Main = styled("div")`
   font-family: sans-serif;
   background: #f0f0f0;
@@ -103,11 +104,11 @@ function App() {
 
 
 
-  const ExampleLink = ({ fileName, label, onClick, children }) => {
-    return <>
-      <ButtonDefault onClick={() => onClick(fileName)}>{children}</ButtonDefault>
-    </>;
-  };
+  // const ExampleLink = ({ fileName, label, onClick, children }) => {
+  //   return <>
+  //     <ButtonDefault onClick={() => onClick(fileName)}>{children}</ButtonDefault>
+  //   </>;
+  // };
 
   return (
     <Main>
