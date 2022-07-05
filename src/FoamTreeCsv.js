@@ -104,6 +104,15 @@ const FoamTreeCsv = () => {
     }, 50);
   }, []);
 
+  const loadExample2 = useCallback(name => {
+    setDataObject({ groups: [] });
+    window.setTimeout(() => {
+      fetch(`examples/${name}`)
+        .then(response => response.arrayBuffer())
+        .then(response => loadSpreadsheet(response, name));
+    }, 50);
+  }, []);
+
   // Load some example on start
   useEffect(() => {
     if (process.env.NODE_ENV !== "production") {
@@ -149,7 +158,7 @@ const FoamTreeCsv = () => {
           
           <h3><center>Painel de Filtros e Funções</center></h3>
           
-            <App exampleClicked={loadExample} />
+            <App exampleClicked2={loadExample2} />
           
           
           <SettingsPanel exampleClicked={loadExample} welcomeClicked={() => setDataObject({})} exportJsonClicked={exportJson} exportJsonPClicked={exportJsonP} />

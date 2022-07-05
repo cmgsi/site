@@ -68,14 +68,14 @@ var city = ''
 var revenue = ''
 
 
-export const App2 = ({ exampleClicked }) => {
+export const App2 = ({ exampleClicked2 }) => {
   return (
-    <ExampleLink fileName="example.ods" onClick={exampleClicked}>visualize this example</ExampleLink>
+    <ExampleLink fileName="example.ods" onClick={exampleClicked2}>visualize this example</ExampleLink>
   );
 };
 
 
-export const App = ({ exampleClicked }) => {
+export const App = ({ exampleClicked2 }) => {
   const [list, setList] = useState([]);
   useEffect(() => {
     let mounted = true;
@@ -115,6 +115,12 @@ export const App = ({ exampleClicked }) => {
     var ano = 2010;
     var origem = revenue;
     var municipio = city;
+    if (municipio == '') {
+      municipio = 'ADAMANTINA'
+    }
+    if (origem == '') {
+      origem = 'Federal'
+    }
     return [ano, origem, municipio];
   }
 
@@ -126,7 +132,7 @@ export const App = ({ exampleClicked }) => {
       <center><h6>Cidades</h6></center>
       <DropDownContainer>
         <DropDownHeader onClick={toggling}>
-          {selectedOption || "São Paulo"}
+          {selectedOption || "ADAMANTINA"}
         </DropDownHeader>
         {isOpen && (
           <DropDownListContainer>
@@ -158,7 +164,7 @@ export const App = ({ exampleClicked }) => {
       </center>
       <center>
         <p>
-          <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked}> Exemplo de apresentação.. </ExampleLink>
+          <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked2}> Exemplo de apresentação.. </ExampleLink>
         </p>
       </center>
     </Main>
@@ -168,7 +174,15 @@ export const App = ({ exampleClicked }) => {
   function consult() {
     var params = getAllPageParams();
     console.log(params);
-    start2(params);
+    var blobArray;
+    f();
+    async function f() {
+      const blobArray = await start2(params);
+      console.log('imprimir blob')
+      console.log(blobArray)
+        exampleClicked2(blobArray)
+    }
+    console.log(blobArray)
   };
 }
 

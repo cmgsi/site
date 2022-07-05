@@ -39,7 +39,7 @@ PREFIX bra: <http://www.semanticweb.org/ontologies/OrcamentoPublicoBrasileiro.ow
         let stringJson = await response.text()
         stringJson = JSON.parse(stringJson);
         // console.log(stringJson)
-        print(stringJson);
+        return print(stringJson);
 
     }
 
@@ -61,11 +61,11 @@ function print(stringJson) {
 
 
     const ws = XLSX.utils.aoa_to_sheet(arrayReturn)
-    const wb = XLSX.utils.book_new()
-    XLSX.utils.book_append_sheet(wb, ws, 'Responses')
-    XLSX.writeFile(wb, 'sampleData.xlsx');
+     const wb = XLSX.utils.book_new()
+    //  XLSX.utils.book_append_sheet(wb, ws, 'Responses')
+    // XLSX.writeFile(wb, 'sampleData.xlsx');
 
      //Escrever(arrayReturn)
 
-    return wb;
+    return ("sampleData.xlsx");
 }
