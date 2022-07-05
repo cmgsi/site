@@ -1,12 +1,12 @@
-import CidadesSP from './AACidades';
+// import App from './App';
 
-export default function Queries() {
+// export default function Queries() {
 
-    return (
-        <div className="Queries">
-            <div className="CidadesSP">
-                <CidadesSP/>
-            </div>
-        </div>
-    );
-}
+//     return (
+//         <div className="App">
+//             <div className="App">
+//                 <App/>
+//             </div>
+//         </div>
+//     );
+// }

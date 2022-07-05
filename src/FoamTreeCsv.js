@@ -13,7 +13,7 @@ import { logStore } from "./stores.js";
 import XLSX from "xlsx";
 import './FoamTreeCsv.css';
 import { ButtonLink } from "./carrotsearch/ui/ButtonLink.js";
-import App from "./App";
+import  App  from './App';
 
 const baseStyle = {
   borderWidth: 4,
@@ -137,19 +137,31 @@ const FoamTreeCsv = () => {
     <div {...getRootProps({ style })}>
 
       <div className="App">
-        <App />
+        <h2>Visualização</h2>
       </div>
 
       <main className="FoamTreeCsv" style={{ visibility: !!dataObject.groups ? "visible" : "hidden" }}>
         <div className="visualization">
           <FoamTreePanel dataObject={dataObject} foamTreeRef={foamTreeRef} />
         </div>
+
         <div className="settings">
+          
+          <h3><center>Painel de Filtros e Funções</center></h3>
+          
+            <App exampleClicked={loadExample} />
+          
+          
           <SettingsPanel exampleClicked={loadExample} welcomeClicked={() => setDataObject({})} exportJsonClicked={exportJson} exportJsonPClicked={exportJsonP} />
+          
           <hr />
+          
           <div style={{ textAlign: "right", marginBottom: "0.25em" }}>
+          
             <ButtonLink onClick={() => logStore.entries = []}>limpar os logs</ButtonLink>
+
           </div>
+          
           <OperationLog log={logStore} />
         </div>
       </main>

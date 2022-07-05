@@ -6,9 +6,6 @@ import { ButtonLink } from "./carrotsearch/ui/ButtonLink.js";
 import { ButtonDefault } from "./carrotsearch/ui/ButtonDefault.js";
 import { FormGroup } from "@blueprintjs/core";
 
-import App from './AACidades';
-
-import Queries from "./Queries";
 
 const ExampleLink = ({ fileName, label, onClick, children }) => {
   return <>
@@ -67,11 +64,9 @@ const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClic
       Para visualizar uma nova planilha, arraste e solte-a nesta janela.  <ButtonLink onClick={e => { e.preventDefault(); welcomeClicked() }}>Bem-vindo / Ajuda</ButtonLink>.
     </p>
 
-    <div className="App">
-            <div className="App">
-                <App exampleClicked/>
-            </div>
-        </div>
+    {/* <div className="bla">
+      <App />
+    </div> */}
 
     <center>
       <p>
@@ -82,6 +77,7 @@ const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClic
     <hr />
     <Settings settings={settings} get={storeGetter} set={storeSetter} />
     <hr />
+    
 
     <div className="Settings">
       <FormGroup label="Exportar" inline={true}>

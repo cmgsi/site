@@ -1,5 +1,4 @@
 import XLSX from "xlsx";
-import FoamTreeCsv from './FoamTreeCsv.js';
 export function start2(params) {
 
     const SimpleClient = require('sparql-http-client/SimpleClient')
