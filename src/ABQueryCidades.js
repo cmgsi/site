@@ -48,24 +48,48 @@ PREFIX bra: <http://www.semanticweb.org/ontologies/OrcamentoPublicoBrasileiro.ow
         .then(v => {
             return v
         });
-}
 
-function print(stringJson) {
-    var arrayReturn = [];
-    arrayReturn.push(['Level 1', 'Level 2']);
-    for (var i = 0; stringJson.results['bindings'].length > i; i++) {
-        console.log(stringJson.results['bindings'][i]['Origem'].value);
-        console.log(stringJson.results['bindings'][i]['total'].value);
-        arrayReturn.push([stringJson.results['bindings'][i]['Origem'].value, stringJson.results['bindings'][i]['total'].value]);
+
+    function print(stringJson) {
+        var arrayReturn = [];
+
+        arrayReturn.push(['Level 1', 'Level 2', 'Level 3', 'weight', 'color']);
+
+        for (var i = 0; stringJson.results['bindings'].length > i; i++) {
+            console.log(stringJson.results['bindings'][i]['Origem'].value);
+            console.log(stringJson.results['bindings'][i]['total'].value);
+            arrayReturn.push([
+                city
+                , stringJson.results['bindings'][i]['Origem'].value
+                , stringJson.results['bindings'][i]['total'].value
+                , stringJson.results['bindings'][i]['total'].value
+                , "hsl(60, 80%, 60%)"]);
+        }
+
+
+        const ws = XLSX.utils.aoa_to_sheet(arrayReturn)
+        const wb = XLSX.utils.book_new()
+         XLSX.utils.book_append_sheet(wb, ws, 'Responses')
+         var xlsx = XLSX.writeFile(wb, 'sampleData.xlsx');
+
+        // var FileSaver = require('file-saver')
+
+        // /* add worksheet to workbook */
+        // wb.SheetNames[0] = 'Testing';
+        // wb.Sheets['Testing'] = ws;  //worksheet handle
+
+        // var wopts = { bookType: 'xlsx', bookSST: false, type: 'binary' };
+        // var wbout = XLSX.write(wb, wopts);
+
+        // /* the saveAs call downloads a file on the local machine */
+        // FileSaver.saveAs(new Blob([s2ab(wbout)], { type: "" }), "test.xlsx");
+
+
+
+
+        //Escrever(arrayReturn)
+
+        return ("sampleData.xlsx");
     }
 
-
-    const ws = XLSX.utils.aoa_to_sheet(arrayReturn)
-     const wb = XLSX.utils.book_new()
-    //  XLSX.utils.book_append_sheet(wb, ws, 'Responses')
-    // XLSX.writeFile(wb, 'sampleData.xlsx');
-
-     //Escrever(arrayReturn)
-
-    return ("sampleData.xlsx");
 }
