@@ -1,4 +1,11 @@
 import XLSX from "xlsx";
+
+import save from './app_request'
+
+import fs from 'fs'
+
+
+
 export function start2(params) {
 
     const SimpleClient = require('sparql-http-client/SimpleClient')
@@ -53,43 +60,69 @@ PREFIX bra: <http://www.semanticweb.org/ontologies/OrcamentoPublicoBrasileiro.ow
     function print(stringJson) {
         var arrayReturn = [];
 
-        arrayReturn.push(['Level 1', 'Level 2', 'Level 3', 'weight', 'color']);
+        // arrayReturn.push(['Level 1', 'Level 2', 'Level 3', 'weight', 'color']);
+        arrayReturn.push(['Level 1', 'Level 2']);
 
+        // for (var i = 0; stringJson.results['bindings'].length > i; i++) {
+        //     console.log(stringJson.results['bindings'][i]['Origem'].value);
+        //     console.log(stringJson.results['bindings'][i]['total'].value);
+        //     arrayReturn.push([
+        //         city
+        //         , stringJson.results['bindings'][i]['Origem'].value
+        //         , stringJson.results['bindings'][i]['total'].value
+        //         , stringJson.results['bindings'][i]['total'].value
+        //         , "hsl(60, 80%, 60%)"]);
+        // }
         for (var i = 0; stringJson.results['bindings'].length > i; i++) {
             console.log(stringJson.results['bindings'][i]['Origem'].value);
             console.log(stringJson.results['bindings'][i]['total'].value);
             arrayReturn.push([
-                city
+              
                 , stringJson.results['bindings'][i]['Origem'].value
                 , stringJson.results['bindings'][i]['total'].value
-                , stringJson.results['bindings'][i]['total'].value
-                , "hsl(60, 80%, 60%)"]);
+
+                ]);
         }
 
-
+        // new Uint16Array(arrayReturn).buffer;
         const ws = XLSX.utils.aoa_to_sheet(arrayReturn)
         const wb = XLSX.utils.book_new()
-         XLSX.utils.book_append_sheet(wb, ws, 'Responses')
-         var xlsx = XLSX.writeFile(wb, 'sampleData.xlsx');
+        XLSX.utils.book_append_sheet(wb, ws, 'Responses')
+        // var xlsx = XLSX.writeFile(wb, 'sampleDataBRABOOOO.xlsx');
 
-        // var FileSaver = require('file-saver')
+        const encoder = new TextEncoder();
+         const stringsArr = [['Level 1', 'aa'],	['Level 1', 'aa']]
+            
+        const stringsEncoded = stringsArr.map(string => encoder.encode(string));
+        const stringsBuffers = stringsEncoded.map(uint8 => uint8.buffer);
 
-        // /* add worksheet to workbook */
-        // wb.SheetNames[0] = 'Testing';
-        // wb.Sheets['Testing'] = ws;  //worksheet handle
-
-        // var wopts = { bookType: 'xlsx', bookSST: false, type: 'binary' };
-        // var wbout = XLSX.write(wb, wopts);
-
-        // /* the saveAs call downloads a file on the local machine */
-        // FileSaver.saveAs(new Blob([s2ab(wbout)], { type: "" }), "test.xlsx");
-
-
-
-
-        //Escrever(arrayReturn)
-
-        return ("sampleData.xlsx");
+        console.log(stringsBuffers)
+        return wb;
     }
-
 }
+
+// function save(xlsx) {
+
+//     const readStream = createReadStream.createReadStream(xlsx);
+
+//     const form = new FormData();
+//     form.append('sheet', readStream);
+//     // form.append('firstName', 'bla');
+//     // form.append('lastName', 'blabla');
+
+//     const req = request.request(
+//         {
+//             host: 'localhost',
+//             port: '8080',
+//             path: '/upload',
+//             method: 'POST',
+//             headers: form.getHeaders(),
+//         },
+//         response => {
+//             console.log(response.statusCode); // 200
+//             console.log(response.statusMessage);
+//         }
+//     );
+//     form.pipe(req);
+// }
+

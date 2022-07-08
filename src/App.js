@@ -6,6 +6,9 @@ import React, { useEffect, useState } from 'react';
 import { Button } from "@blueprintjs/core";
 import { ButtonLink } from "./carrotsearch/ui/ButtonLink.js";
 import { Icon } from "@blueprintjs/core";
+import {save} from './app_request'
+
+// const { pipeline } = require('stream').promises
 
 const ExampleLink = ({ fileName, label, onClick, children }) => {
   return <>
@@ -178,11 +181,11 @@ export const App = ({ exampleClicked2 }) => {
     f();
     async function f() {
       const blobArray = await start2(params);
-      console.log('imprimir blob')
+      // console.log('imprimir blob')
+      // save(blobArray);
       console.log(blobArray)
-        exampleClicked2(blobArray)
+         exampleClicked2(blobArray)
     }
-    console.log(blobArray)
   };
 }
 

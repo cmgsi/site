@@ -43,11 +43,35 @@ const rejectStyle = {
 };
 
 const FoamTreeCsv = () => {
+
   const [dataObject, setDataObject] = useState({});
+
   const loadSpreadsheet = (buffer, fileName) => {
     logStore.entries.push({ message: `Parsing ${fileName}.`, code: "I001" });
     window.setTimeout(() => {
       const workbook = XLSX.read(buffer, { type: "array" });
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+      const parser = Worksheet2FoamTree.parse(sheet);
+      parser.getLog()
+        .map(l => ({ code: l.code, message: Worksheet2FoamTree.getMessage(l) }))
+        .forEach(e => logStore.entries.push(e));
+
+      const propertyNames = parser.getPropertyNames();
+      const dataObject = prepareDataObject(propertyNames, parser.getDataObject());
+      const count = dataObject ? dataObject.groups.reduce(function counter(cnt, group) {
+        return cnt + 1 + (group.groups ? group.groups.reduce(counter, 0) : 0);
+      }, 0) : 0;
+
+      logStore.entries.push({ message: `Visualizing ${fileName} (${count} groups).`, code: "I002" });
+      setDataObject(dataObject);
+    }, 50);
+  };
+
+
+  const loadSpreadsheet2 = (wb, fileName) => {
+    logStore.entries.push({ message: `Parsing ${fileName}.`, code: "I001" });
+    window.setTimeout(() => {
+      const workbook = wb;
       const sheet = workbook.Sheets[workbook.SheetNames[0]];
       const parser = Worksheet2FoamTree.parse(sheet);
       parser.getLog()
@@ -107,9 +131,9 @@ const FoamTreeCsv = () => {
   const loadExample2 = useCallback(name => {
     setDataObject({ groups: [] });
     window.setTimeout(() => {
-      fetch(`examples/${name}`)
-        .then(response => response.arrayBuffer())
-        .then(response => loadSpreadsheet(response, name));
+      
+        
+        loadSpreadsheet2(name, 'name')
     }, 50);
   }, []);
 
