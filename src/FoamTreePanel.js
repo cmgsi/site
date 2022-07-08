@@ -96,7 +96,7 @@ export const prepareDataObject = (propetyNames, dataObject, log) => {
 
 export const FoamTreePanel = view(({ dataObject, foamTreeRef }) => {
   return (
-      <FoamTree dataObject={dataObject} options={buildOptions(settingsStore)} implRef={foamTreeRef} />
+    <FoamTree dataObject={dataObject} options={buildOptions(settingsStore)} implRef={foamTreeRef} />
   );
 });
 

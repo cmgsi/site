@@ -6,9 +6,6 @@ import React, { useEffect, useState } from 'react';
 import { Button } from "@blueprintjs/core";
 import { ButtonLink } from "./carrotsearch/ui/ButtonLink.js";
 import { Icon } from "@blueprintjs/core";
-import {save} from './app_request'
-
-// const { pipeline } = require('stream').promises
 
 const ExampleLink = ({ fileName, label, onClick, children }) => {
   return <>
@@ -16,7 +13,6 @@ const ExampleLink = ({ fileName, label, onClick, children }) => {
     <a href={`examples/${fileName}`} title="download this example"><Icon icon={"download"} /></a>
   </>;
 };
-
 
 const Main = styled("div")`
   font-family: sans-serif;
@@ -63,20 +59,17 @@ const ListItem = styled("li")`
   margin-bottom: 0.1em;
 `;
 
-
 var options = []
 const options2 = ["Federal", "Estadual", "Municipal"];
 
 var city = ''
 var revenue = ''
 
-
 export const App2 = ({ exampleClicked2 }) => {
   return (
     <ExampleLink fileName="example.ods" onClick={exampleClicked2}>visualize this example</ExampleLink>
   );
 };
-
 
 export const App = ({ exampleClicked2 }) => {
   const [list, setList] = useState([]);
@@ -126,8 +119,6 @@ export const App = ({ exampleClicked2 }) => {
     }
     return [ano, origem, municipio];
   }
-
-
 
 
   return (
@@ -184,7 +175,7 @@ export const App = ({ exampleClicked2 }) => {
       // console.log('imprimir blob')
       // save(blobArray);
       console.log(blobArray)
-         exampleClicked2(blobArray)
+      exampleClicked2(blobArray)
     }
   };
 }

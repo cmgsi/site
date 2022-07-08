@@ -64,10 +64,6 @@ const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClic
       Para visualizar uma nova planilha, arraste e solte-a nesta janela.  <ButtonLink onClick={e => { e.preventDefault(); welcomeClicked() }}>Bem-vindo / Ajuda</ButtonLink>.
     </p>
 
-    {/* <div className="bla">
-      <App />
-    </div> */}
-
     <center>
       <p>
         <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked}> Exemplo de apresentação.. </ExampleLink>
@@ -77,7 +73,6 @@ const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClic
     <hr />
     <Settings settings={settings} get={storeGetter} set={storeSetter} />
     <hr />
-    
 
     <div className="Settings">
       <FormGroup label="Exportar" inline={true}>

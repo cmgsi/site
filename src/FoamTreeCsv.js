@@ -13,7 +13,7 @@ import { logStore } from "./stores.js";
 import XLSX from "xlsx";
 import './FoamTreeCsv.css';
 import { ButtonLink } from "./carrotsearch/ui/ButtonLink.js";
-import  App  from './App';
+import App from './App';
 
 const baseStyle = {
   borderWidth: 4,
@@ -101,6 +101,7 @@ const FoamTreeCsv = () => {
     reader.onload = () => loadSpreadsheet(reader.result, file.name)
     reader.readAsArrayBuffer(file);
   }, [])
+  
   const {
     getRootProps,
     isDragActive,
@@ -131,13 +132,11 @@ const FoamTreeCsv = () => {
   const loadExample2 = useCallback(name => {
     setDataObject({ groups: [] });
     window.setTimeout(() => {
-      
-        
-        loadSpreadsheet2(name, 'name')
+      loadSpreadsheet2(name, 'name')
     }, 50);
   }, []);
 
-  // Load some example on start
+  // Carregar um exemplo no inicio
   useEffect(() => {
     if (process.env.NODE_ENV !== "production") {
       loadExample(`example.ods`);
@@ -166,6 +165,7 @@ const FoamTreeCsv = () => {
     });
   }, []);
 
+
   return (
     <div {...getRootProps({ style })}>
 
@@ -179,22 +179,22 @@ const FoamTreeCsv = () => {
         </div>
 
         <div className="settings">
-          
+
           <h3><center>Painel de Filtros e Funções</center></h3>
-          
-            <App exampleClicked2={loadExample2} />
-          
-          
+
+          <App exampleClicked2={loadExample2} />
+
+
           <SettingsPanel exampleClicked={loadExample} welcomeClicked={() => setDataObject({})} exportJsonClicked={exportJson} exportJsonPClicked={exportJsonP} />
-          
+
           <hr />
-          
+
           <div style={{ textAlign: "right", marginBottom: "0.25em" }}>
-          
+
             <ButtonLink onClick={() => logStore.entries = []}>limpar os logs</ButtonLink>
 
           </div>
-          
+
           <OperationLog log={logStore} />
         </div>
       </main>

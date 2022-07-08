@@ -1,11 +1,5 @@
 import XLSX from "xlsx";
 
-import save from './app_request'
-
-import fs from 'fs'
-
-
-
 export function start2(params) {
 
     const SimpleClient = require('sparql-http-client/SimpleClient')
@@ -47,15 +41,12 @@ PREFIX bra: <http://www.semanticweb.org/ontologies/OrcamentoPublicoBrasileiro.ow
         stringJson = JSON.parse(stringJson);
         // console.log(stringJson)
         return print(stringJson);
-
     }
-
 
     return func()
         .then(v => {
             return v
         });
-
 
     function print(stringJson) {
         var arrayReturn = [];
@@ -77,11 +68,11 @@ PREFIX bra: <http://www.semanticweb.org/ontologies/OrcamentoPublicoBrasileiro.ow
             console.log(stringJson.results['bindings'][i]['Origem'].value);
             console.log(stringJson.results['bindings'][i]['total'].value);
             arrayReturn.push([
-              
+
                 , stringJson.results['bindings'][i]['Origem'].value
                 , stringJson.results['bindings'][i]['total'].value
 
-                ]);
+            ]);
         }
 
         // new Uint16Array(arrayReturn).buffer;
@@ -90,13 +81,13 @@ PREFIX bra: <http://www.semanticweb.org/ontologies/OrcamentoPublicoBrasileiro.ow
         XLSX.utils.book_append_sheet(wb, ws, 'Responses')
         // var xlsx = XLSX.writeFile(wb, 'sampleDataBRABOOOO.xlsx');
 
-        const encoder = new TextEncoder();
-         const stringsArr = [['Level 1', 'aa'],	['Level 1', 'aa']]
-            
-        const stringsEncoded = stringsArr.map(string => encoder.encode(string));
-        const stringsBuffers = stringsEncoded.map(uint8 => uint8.buffer);
+        // const encoder = new TextEncoder();
+        // const stringsArr = [['Level 1', 'aa'], ['Level 1', 'aa']]
 
-        console.log(stringsBuffers)
+        // const stringsEncoded = stringsArr.map(string => encoder.encode(string));
+        // const stringsBuffers = stringsEncoded.map(uint8 => uint8.buffer);
+
+        //console.log(stringsBuffers)
         return wb;
     }
 }
