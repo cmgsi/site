@@ -156,11 +156,11 @@ export const App = ({ exampleClicked2 }) => {
           <Button type="button" onClick={() => consult()} > Pesquisar.. </Button>
         </p>
       </center>
-      <center>
+      {/* <center>
         <p>
           <ExampleLink fileName="papio_anubis_anon.xlsx" onClick={exampleClicked2}> Exemplo de apresentação.. </ExampleLink>
         </p>
-      </center>
+      </center> */}
     </Main>
 
   );

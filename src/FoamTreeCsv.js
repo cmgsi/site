@@ -180,7 +180,7 @@ const FoamTreeCsv = () => {
 
         <div className="settings">
 
-          <h3><center>Painel de Filtros e Funções</center></h3>
+          <h3><center>Painel de Filtros</center></h3>
 
           <App exampleClicked2={loadExample2} />
 

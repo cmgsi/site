@@ -224,21 +224,21 @@ export const Welcome = ({ visible, exampleClicked }) => {
 
           <hr/>
           <p className="Stamps">
-            <a href="https://carrotsearch.com/foamtree/"
+            {/* <a href="https://carrotsearch.com/foamtree/"
                title="Powered by FoamTree treemap visualization"
                className="PoweredBy Stamp"
                target="_blank" rel="noopener noreferrer">
               Powered by
               <FoamTreeLogo />
-            </a>
+            </a> */}
 
-            <a href="https://github.com/carrotsearch"
+            {/* <a href="https://github.com/carrotsearch"
                title="Source code on GitHub"
                className="SourceCode Stamp"
                target="_blank" rel="noopener noreferrer">
               Source code
               <GitHubLogo />
-            </a>
+            </a> */}
           </p>
         </div>
 

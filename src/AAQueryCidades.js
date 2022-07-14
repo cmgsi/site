@@ -16,7 +16,6 @@ PREFIX ov: <http://open.vocab.org/terms/> \
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \
 PREFIX bra: <http://www.semanticweb.org/ontologies/OrcamentoPublicoBrasileiro.owl/>"
 
-
 var query = prefix + "select ?nome WHERE { ?mun a bra:Municipio . ?mun dc:title ?nome} "
 
 const endpointUrl = 'http://cassidy.gpopai.usp.br:8209/OrcamentoGovernoMunicipiosSP/query'
@@ -41,12 +40,6 @@ export function start() {
       return v
     });
 }
-
-
-// func().then(v => {
-//     console.log(v)
-
-//   });
 
 function print(stringJson) {
 

@@ -58,7 +58,7 @@ const settings = {
 
 const SettingsPanel = view(({ welcomeClicked, exportJsonClicked, exportJsonPClicked, exampleClicked }) => (
   <>
-    <h3>Painel de Filtros e Funções</h3>
+     <h3><center>Painel de Funções Extras</center></h3>
 
     <p>
       Para visualizar uma nova planilha, arraste e solte-a nesta janela.  <ButtonLink onClick={e => { e.preventDefault(); welcomeClicked() }}>Bem-vindo / Ajuda</ButtonLink>.
